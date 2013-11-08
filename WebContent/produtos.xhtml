@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>K19Treinamentos</title>
+</h:head>
+<h:body>
+
+	<h:outputStylesheet name="k19.css" library="css" />
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Nome:" for="campo-nome" />
+			<h:inputText value="#{produtosBean.produto.nome}" id="campo-nome" />
+			<h:outputLabel value="Preco:" for="campo-preco" />
+			<h:inputText value="#{produtosBean.produto.preco}" id="campo-preco" />
+			<h:outputLabel value="Exibir:" for="campo-exibir" />
+			<h:selectBooleanCheckbox value="#{produtosBean.produto.exibir}"
+				id="campo-exibir" />
+			<h:commandButton value="Adicionar"
+				action="#{produtosBean.adicionaProdutos}" />
+		</h:panelGrid>
+	</h:form>
+
+	<h:dataTable value="#{produtosBean.produtos}" var="produto"
+		rendered="#{not empty produtosBean.produto}"
+		style="height: 110px; width: 577px; ">
+
+		<f:facet name="header">Lista de Produtos</f:facet>
+
+		<h:column>
+			<f:facet name="header">Nome</f:facet>#{produto.nome}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Preço</f:facet>#{produto.preco}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Exibir</f:facet>#{produto.exibir}
+		</h:column>
+
+	</h:dataTable>
+
+</h:body>
+</html>
