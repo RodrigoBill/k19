@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>K19Treinamentos</title>
+</h:head>
+<h:body>
+
+<h:link value="Menu Carros" outcome="menuCarrosEscopos"/>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Marca:" for="campo-marca" />
+			<h:inputText value="#{carroEscoposBean.carro.marca}" id="campo-marca" />
+			<h:outputLabel value="Modelo:" for="campo-modelo" />
+			<h:inputText value="#{carroEscoposBean.carro.modelo}" id="campo-modelo" />
+			<h:commandButton value="Adicionar"
+				action="#{carroEscoposBean.adicionaCarro}" />
+		</h:panelGrid>
+	</h:form>
+
+	<h:panelGroup rendered="#{not empty carroEscoposBean.carros}">
+		<h1>Lista de carros:</h1>
+		<ul>
+			<ui:repeat value="#{carroEscoposBean.carros}" var="carro">
+				<li><h:outputText value="#{carro.marca} #{carro.modelo}" /></li>
+			</ui:repeat>
+		</ul>
+	</h:panelGroup>
+
+</h:body>
+</html>
