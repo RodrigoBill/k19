@@ -14,11 +14,12 @@ import javax.servlet.annotation.WebFilter;
 
 @WebFilter(servletNames = { "FacesServlet" })
 public class JPAFilter implements Filter {
+
 	private EntityManagerFactory factory;
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		this.factory = Persistence.createEntityManagerFactory("test");
+		this.factory = Persistence.createEntityManagerFactory("K19-PU");
 	}
 
 	@Override
@@ -29,14 +30,17 @@ public class JPAFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
+
 		// CHEGADA
 		EntityManager manager = this.factory.createEntityManager();
 		request.setAttribute("EntityManager", manager);
 		manager.getTransaction().begin();
 		// CHEGADA
+		
 		// FACESSERVLET
 		chain.doFilter(request, response);
 		// FACESSERVLET
+
 		// SAÍDA
 		try {
 			manager.getTransaction().commit();

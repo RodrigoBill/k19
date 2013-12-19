@@ -19,6 +19,7 @@ public class CarroJPABean {
 	public void adicionaCarro() {
 		EntityManager manager = this.getEntityManager();
 		CarroJPARepository repository = new CarroJPARepository(manager);
+		
 		repository.adiciona(this.carro);
 		this.carro = new CarroJPA();
 	}
@@ -33,8 +34,8 @@ public class CarroJPABean {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		ExternalContext ec = fc.getExternalContext();
 		HttpServletRequest request = (HttpServletRequest) ec.getRequest();
-		EntityManager manager = (EntityManager) request
-				.getAttribute("EntityManager");
+		EntityManager manager = (EntityManager) request.getAttribute("EntityManager");
+		
 		return manager;
 	}
 

@@ -17,7 +17,7 @@ public class CarroJPARepository {
 	}
 
 	public List<CarroJPA> buscaTodos() {
-		Query query = this.manager.createQuery("select x from Carro x");
+		Query query = this.manager.createQuery("select x from CarroJPA x");
 		return query.getResultList();
 	}
 

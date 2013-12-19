@@ -2,14 +2,16 @@ package br.com.k19.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class CarroJPA implements Serializable {
 
-	@Id
-	@GeneratedValue
+	@Id	@GeneratedValue
 	private Long id;
+	
 	private String marca;
 	private String modelo;
 
